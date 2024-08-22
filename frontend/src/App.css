@@ -1,8 +1,12 @@
 /* Basic Reset */
 body, html, #root {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #eff3f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 /* App Container */
@@ -95,28 +99,50 @@ body, html, #root {
 }
 
 .customer-feedback form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    background-color: #4A90E2;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+}
+.customer-feedback h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .customer-feedback label {
-    margin-top: 10px;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
 }
 
 .customer-feedback input, .customer-feedback select, .customer-feedback textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 .customer-feedback button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #005b96;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
     color: white;
     border: none;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
+}
+
+.customer-feedback button:hover {
+    background-color: #218838;
+}
+
+.customer-feedback button:focus {
+    outline: none;
 }
