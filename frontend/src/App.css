@@ -1,38 +1,122 @@
+/* Basic Reset */
+body, html, #root {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* App Container */
 .App {
-  text-align: center;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Main Image Styling */
+.main-image img {
+    width: 100%;
+    height: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-image p {
+    margin: 20px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Description Section Styling */
+.description {
+    padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.description-details {
+    display: flex;
+    justify-content: space-around;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.description-item {
+    width: 30%;
+}
+
+.description-item img {
+    width: 100%;
+    height: auto;
+}
+
+.description-item p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Price Review Section Styling */
+.price-review {
+    padding: 20px;
+}
+
+.price-review h2 {
+    margin-bottom: 20px;
+}
+
+.price-review-details {
+    display: flex;
+    justify-content: space-around;
+}
+
+.price-review-item {
+    width: 30%;
+    text-align: left;
+}
+
+.price-review-item h3 {
+    margin-bottom: 10px;
+}
+
+/* Customer Categories Section Styling */
+.customer-categories {
+    padding: 20px;
+}
+
+.customer-categories table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.customer-categories table, th, td {
+    border: 1px solid black;
+}
+
+.customer-categories th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Customer Feedback Section Styling */
+.customer-feedback {
+    padding: 20px;
+}
+
+.customer-feedback form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.customer-feedback label {
+    margin-top: 10px;
+}
+
+.customer-feedback input, .customer-feedback select, .customer-feedback textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.customer-feedback button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #005b96;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
