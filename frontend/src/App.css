@@ -1,148 +1,279 @@
-/* Basic Reset */
-body, html, #root {
+body {
     font-family: Arial, sans-serif;
-    background-color: #eff3f7;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    background-color: #eef2f5;
+  }
+  
+  header {
+    background-color: #0044cc;
+    padding: 10px;
+    color: white;
+    text-align: center;
+  }
+  
+  header .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  header nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-/* App Container */
-.App {
+    gap: 15px;
+  }
+  
+  header nav a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  header nav input[type="text"] {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .main-image {
     text-align: center;
-}
-
-/* Main Image Styling */
-.main-image img {
-    width: 100%;
-    height: auto;
-}
-
-.main-image p {
-    margin: 20px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Description Section Styling */
-.description {
+    background-color: #eef;
     padding: 20px;
+  }
+  
+  .description {
+    padding: 40px 20px;
+    background-color: #ffffff;
 }
 
-.description-details {
+.description p {
+    font-size: 1.2em;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.factors {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.description-item {
-    width: 30%;
-}
-
-.description-item img {
-    width: 100%;
-    height: auto;
-}
-
-.description-item p {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-/* Price Review Section Styling */
-.price-review {
+.factor {
+    background-color: #f9f9f9;
+    border-radius: 10px;
     padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.factor:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.factor-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.factor h3 {
+    color: #0066cc;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.factor p {
+    color: #555555;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+  
+.price-review {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    text-align: center;
 }
 
 .price-review h2 {
-    margin-bottom: 20px;
+    color: #003366;
+    font-size: 1.8em;
+    margin-bottom: 30px;
 }
 
-.price-review-details {
+.review-factors {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
 }
 
-.price-review-item {
+.factor {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
     width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.factor:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.factor-header {
+    background-color: #0066cc;
+    color: #ffffff;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+}
+
+.factor-header h3 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #fff;
+}
+
+.factor p {
+    color: #555555;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 15px;
+    text-align: left;
+}
+  
+.categories-table {
+    padding: 40px;
+    background-color: #ffffff;
     text-align: left;
 }
 
-.price-review-item h3 {
-    margin-bottom: 10px;
-}
-
-/* Customer Categories Section Styling */
-.customer-categories {
-    padding: 20px;
-}
-
-.customer-categories table {
+table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.customer-categories table, th, td {
-    border: 1px solid black;
-}
-
-.customer-categories th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-/* Customer Feedback Section Styling */
-.customer-feedback {
-    padding: 20px;
-}
-
-.customer-feedback form {
-    background-color: #4A90E2;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    max-width: 100%;
-}
-.customer-feedback h2 {
+thead th {
+    background-color: #0055a5;
+    color: #ffffff;
+    padding: 15px;
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+    font-weight: bold;
 }
 
-.customer-feedback label {
-    color: #333;
+tbody td {
+    padding: 20px;
+    vertical-align: top;
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: #e0f0f9;
+}
+
+.category-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.category-icon p {
+    font-size: 1.2em;
+    color: #0055a5;
     font-weight: bold;
-    display: block;
+    margin: 0;
+}
+
+ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+ul li {
     margin-bottom: 5px;
 }
+.feedback-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-.customer-feedback input, .customer-feedback select, .customer-feedback textarea {
+.feedback-form h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.feedback-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form select,
+.feedback-form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    color: #333;
 }
 
-.customer-feedback button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+.feedback-form input[type="text"]:focus,
+.feedback-form input[type="email"]:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+.feedback-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.feedback-form button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #4CAF50;
     color: white;
+    font-size: 16px;
+    font-weight: bold;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.customer-feedback button:hover {
-    background-color: #218838;
+.feedback-form button[type="submit"]:hover {
+    background-color: #45a049;
 }
-
-.customer-feedback button:focus {
-    outline: none;
-}
+  
