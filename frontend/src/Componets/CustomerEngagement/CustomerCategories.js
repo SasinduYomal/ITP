@@ -4,6 +4,7 @@ import '../../App.css';
 const CustomerCategories = () => {
     return (
         <section className="categories-table">
+            <h3>Customer categories</h3>
             <table>
                 <thead>
                     <tr>
