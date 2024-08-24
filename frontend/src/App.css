@@ -29,6 +29,16 @@ body {
     color: white;
     text-decoration: none;
   }
+  .header-sections nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  .header-sections h2{
+    color: white;
+    text-decoration: none;
+  }
   
   header nav input[type="text"] {
     padding: 5px;

@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../App.css';
 
-
 const Header = () => {
     return (
         <header>
@@ -15,8 +14,19 @@ const Header = () => {
                 <a href="#">Support</a>
                 <a href="#">Blog</a>
             </nav>
+            
+            <div className="header-sections">
+            <nav>
+                <h2><a href='#'>Customer Engagement</a></h2>
+                <h2><a href='#'>Promotions and Discounts</a></h2>
+                <h2><a href='#'>Partnerships and Collaborations</a></h2>
+                <h2><a href='#'>Digital Marketing</a></h2>
+                </nav>    
+            </div>
+            
         </header>
     );
-};
+}
 
 export default Header;
+
