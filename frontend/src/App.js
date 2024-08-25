@@ -1,24 +1,20 @@
-import React, { useState } from 'react';
-import Header from "./Componets/CustomerEngagement/Header";
-import MainImage from "./Componets/CustomerEngagement/MainImage";
-import Description from "./Componets/CustomerEngagement/Description";
-import PriceReview from "./Componets/CustomerEngagement/PriceReview";
-import CustomerCategories from "./Componets/CustomerEngagement/CustomerCategories";
-import CustomerFeedback from "./Componets/CustomerEngagement/CustomerFeedback";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom'; // Correct import
+import CustomerEngagement from './Components/CustomerEngagement/CustomerEngagement';
+import './App.css';
+import Promo from './Components/Promotion/Promo';
 
 
 function App() {
-    
     return (
         <div className="App">
-            <Header />
-            <MainImage />
-            <Description />
-            <PriceReview />
-            <CustomerCategories />
-            <CustomerFeedback />
+            
+            <Promo/>
+           
         </div>
     );
 }
 
 export default App;
+
+

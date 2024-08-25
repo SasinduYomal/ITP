@@ -1,5 +1,8 @@
 import React from 'react';
 import '../../App.css';
+import {Link} from "react-router-dom";
+
+
 
 const Header = () => {
     return (
@@ -17,8 +20,11 @@ const Header = () => {
             
             <div className="header-sections">
             <nav>
+                
                 <h2><a href='#'>Customer Engagement</a></h2>
+                <Link to="/Promo">
                 <h2><a href='#'>Promotions and Discounts</a></h2>
+                </Link>
                 <h2><a href='#'>Partnerships and Collaborations</a></h2>
                 <h2><a href='#'>Digital Marketing</a></h2>
                 </nav>    
