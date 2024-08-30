@@ -16,7 +16,6 @@ const CustomerCategories = () => {
                 <tbody>
                     <tr>
                         <td className="category-icon">
-                            <img src="main-image.jpg" alt="Residents" />
                             <p>Residents</p>
                         </td>
                         <td>Anyone that uses or consumes Sydney Water products or services.</td>
@@ -31,7 +30,7 @@ const CustomerCategories = () => {
                     </tr>
                     <tr>
                         <td className="category-icon">
-                            <img src="business-icon.png" alt="Businesses" />
+                           
                             <p>Businesses</p>
                         </td>
                         <td>Any business that uses or consumes Sydney Water products or services.</td>
@@ -46,7 +45,7 @@ const CustomerCategories = () => {
                     </tr>
                     <tr>
                         <td className="category-icon">
-                            <img src="developers-icon.png" alt="Developers" />
+                            
                             <p>Developers</p>
                         </td>
                         <td>Any person or business that has both a financial interest and intention to augment land where residents/businesses will require Sydney Water services.</td>
@@ -61,7 +60,6 @@ const CustomerCategories = () => {
                     </tr>
                     <tr>
                         <td className="category-icon">
-                            <img src="value-makers-icon.png" alt="Value Makers" />
                             <p>Value Makers</p>
                         </td>
                         <td>A business/person interacting with Sydney Water regarding products and services to create valuable things for residents, businesses, or developers.</td>

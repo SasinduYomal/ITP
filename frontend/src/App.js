@@ -8,8 +8,7 @@ import Promo from './Components/Promotion/Promo';
 function App() {
     return (
         <div className="App">
-            
-            <Promo/>
+            <CustomerEngagement/>
            
         </div>
     );

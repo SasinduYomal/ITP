@@ -9,9 +9,9 @@ const PriceReview = () => {
         <div class="review-factors">
             <div class="factor">
                 <div class="factor-header">
-                    <h3>SYDNEY WATER</h3>
+                    <h3>BLUEWAVE WATER</h3>
                 </div>
-                <p>A price review is part of Sydney Water’s cyclical regulatory requirement to IPART. Every five years we develop a price proposal for submission that reflects the efficient cost of providing our services. The priorities and expectations of our customer and community are at the foundation of our price proposal through community engagement.</p>
+                <p>A price review is part of Bluewave Water’s cyclical regulatory requirement to IPART. Every five years we develop a price proposal for submission that reflects the efficient cost of providing our services. The priorities and expectations of our customer and community are at the foundation of our price proposal through community engagement.</p>
             </div>
             <div class="factor">
                 <div class="factor-header">
