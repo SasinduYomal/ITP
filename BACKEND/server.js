@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 require('dotenv').config(); // Ensure environment variables are loaded
 
 // Initialize express app
@@ -10,7 +9,7 @@ const app = express();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json()); // Using body-parser as JSON parser
+app.use(express.json()); // Replaces body-parser for parsing JSON
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/feedbackDB', {
@@ -21,16 +20,17 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/feedbackDB'
 .catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
-const feedbackRoutes = require('./routes/feedbackRoutes'); // Assuming you have a feedbackRoutes file
-app.use('/api/feedback', feedbackRoutes); // Feedback routes
+const feedbackRoutes = require('./routes/feedbackRoutes');
+const proposalRoutes = require('./routes/proposals');
+const preferencesRoutes = require('./routes/preferencesRoutes');
 
-// Additional routes if needed
-const proposalRoutes = require('./routes/proposals'); // Assuming you have a proposals route file
-app.use('/api/proposals', proposalRoutes); // Proposal routes
+// Use routes
+app.use('/api/feedback', feedbackRoutes);       // Feedback routes
+app.use('/api/proposals', proposalRoutes);      // Proposals routes
+app.use('/api/preferences', preferencesRoutes); // Preferences routes
 
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-

@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Preferences = () => {
+const Preferences = ({ userId }) => {
     const [frequency, setFrequency] = useState('daily');
     const [receiveEmail, setReceiveEmail] = useState(true);
     const [receiveSMS, setReceiveSMS] = useState(true);
     const [receiveAppNotifications, setReceiveAppNotifications] = useState(true);
+
+    // Fetch preferences on component mount
+    useEffect(() => {
+        axios.get(`/api/preferences/${userId}`)
+            .then(response => {
+                const { receiveEmail, receiveSMS, receiveAppNotifications, frequency } = response.data;
+                setReceiveEmail(receiveEmail);
+                setReceiveSMS(receiveSMS);
+                setReceiveAppNotifications(receiveAppNotifications);
+                setFrequency(frequency);
+            })
+            .catch(err => {
+                console.error('Error fetching preferences:', err);
+            });
+    }, [userId]);
 
     const handleFrequencyChange = (e) => {
         setFrequency(e.target.value);
@@ -24,8 +40,19 @@ const Preferences = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle the preferences update here
-        console.log('Preferences updated:', { receiveEmail, receiveSMS, receiveAppNotifications, frequency });
+        const preferencesData = {
+            receiveEmail,
+            receiveSMS,
+            receiveAppNotifications,
+            frequency,
+        };
+        axios.post(`/api/preferences/${userId}`, preferencesData)
+            .then(response => {
+                console.log('Preferences updated successfully:', response.data);
+            })
+            .catch(err => {
+                console.error('Error updating preferences:', err);
+            });
     };
 
     return (
@@ -81,4 +108,5 @@ const Preferences = () => {
 };
 
 export default Preferences;
+
 

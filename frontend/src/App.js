@@ -12,7 +12,7 @@ import Blog from './Components/Blog/Blog';
 function App() {
     return (
         <div className="App">
-            <Partnership/>
+            <Promo/>
            
         </div>
     );
