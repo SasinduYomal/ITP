@@ -1,4 +1,5 @@
 import React from 'react';
+import promotions from "../../assets/images/promotions.jpg";
 
 // Example image URL (replace this with your actual URL)
 const headerImage = 'path/to/your/header-image.jpg';
@@ -9,9 +10,10 @@ const descriptionText = 'Here are the latest promotions and discounts available.
 const Header = () => {
     return (
         <header>
-            <h1>Promotions and Discounts</h1>
             <div className="header-image">
-                <img src={headerImage} alt="Promotions Header" />
+            <h1>Promotions and Discounts</h1>
+            
+                <img src={promotions} alt="Promotions Header" />
             </div>
             <div className="description">
                 <p>{descriptionText}</p>

@@ -11,8 +11,8 @@ const ApplyCode = () => {
 
     return (
         <section className="apply-code">
-            <h2>Apply Discount Code</h2>
             <form onSubmit={handleSubmit}>
+            <h2>Apply Discount Code</h2>
                 <label htmlFor="discount-code">Enter Discount Code:</label><br />
                 <input 
                     type="text" 

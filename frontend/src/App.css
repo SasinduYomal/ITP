@@ -1,13 +1,11 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-    background-color: #eef2f5;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    
+
   }
   
   header {
-    background-color: #0044cc;
     padding: 10px;
     color: white;
     text-align: center;
@@ -223,74 +221,96 @@ ul {
 ul li {
     margin-bottom: 5px;
 }
-.feedback-form {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
+/* Container styling */
+.feedback-form-container {
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.feedback-form h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.feedback-form form {
-    display: flex;
-    flex-direction: column;
-}
-
-.feedback-form label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-}
-
-.feedback-form input[type="text"],
-.feedback-form input[type="email"],
-.feedback-form select,
-.feedback-form textarea {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    max-width: 500px;
+    margin-left: 35%;
+
+}
+
+/* Title styling */
+.feedback-form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Paragraph styling */
+.feedback-form-container p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* Label styling */
+.feedback-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
     color: #333;
 }
 
-.feedback-form input[type="text"]:focus,
-.feedback-form input[type="email"]:focus,
-.feedback-form select:focus,
-.feedback-form textarea:focus {
-    border-color: #66afe9;
-    outline: none;
-    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+/* Input, select, and textarea styling */
+.feedback-form-container input,
+.feedback-form-container select,
+.feedback-form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #f9f9f9;
 }
 
-.feedback-form textarea {
+/* Textarea specific styling */
+.feedback-form-container textarea {
+    height: 120px;
     resize: vertical;
-    min-height: 100px;
 }
 
-.feedback-form button[type="submit"] {
-    padding: 12px 20px;
+/* Button styling */
+.feedback-form-container button {
+    width: 100%;
+    padding: 15px;
     background-color: #4CAF50;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.feedback-form button[type="submit"]:hover {
+/* Button hover effect */
+.feedback-form-container button:hover {
     background-color: #45a049;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 600px) {
+    .feedback-form-container {
+        padding: 15px;
+    }
+
+    .feedback-form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .feedback-form-container p {
+        font-size: 0.9rem;
+    }
+
+    .feedback-form-container button {
+        padding: 12px;
+    }
 }
 
 
@@ -307,7 +327,6 @@ h1, h2, h3 {
 
 header {
     text-align: center;
-    background-color: #34495e;
     color: white;
     padding: 20px 0;
     margin-bottom: 20px;
@@ -413,6 +432,7 @@ header h1 {
     width: 100%;
     max-width: 400px;
     text-align: center;
+    margin-left: 30%;
 }
 
 h2 {
@@ -479,13 +499,26 @@ select {
 }
 /* Apply Code Section */
 .apply-code form {
-    display: flex;
-    flex-direction: column;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-left: 30%;
+}
+.apply-code h2{
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #2c3e50;
 }
 
 .apply-code label {
-    margin-bottom: 10px;
-    font-size: 1.1em;
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
 }
 
 .apply-code input[type="text"] {
@@ -497,16 +530,19 @@ select {
 }
 
 .apply-code button {
-    padding: 10px;
-    background-color: #3498db;
+    background-color: #2ecc71;
     color: white;
+    padding: 10px 20px;
+    font-size: 1em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    text-align: center;
 }
 
 .apply-code button:hover {
-    background-color: #2980b9;
+    background-color: #27ae60;
 }
 
 /* Responsive Design */
@@ -520,4 +556,176 @@ select {
         margin-bottom: 10px;
     }
 }
+
+/*Partnership */
+
+.partnership-form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Title styling */
+.partnership-form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Paragraph styling */
+.partnership-form-container p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* Label styling */
+.partnership-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input and textarea styling */
+.partnership-form-container input,
+.partnership-form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+/* Textarea specific styling */
+.partnership-form-container textarea {
+    height: 120px;
+    resize: vertical;
+}
+.partnership-form-container h2{
+    text-align: center;
+    font-size: 45px;
+}
+.partnership-form-container p{
+    font-size: 1.2em;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Button styling */
+.partnership-form-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.partnership-form-container button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 600px) {
+    .partnership-form-container {
+        padding: 15px;
+    }
+
+    .partnership-form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .partnership-form-container p {
+        font-size: 0.9rem;
+    }
+
+    .partnership-form-container button {
+        padding: 12px;
+    }
+}
+
+
+.partnership-list{
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.partnership-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.partnership-video{
+    margin-top: 20px;
+    height: 500px;
+}
   
+  .blog-h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .blog-h2 {
+    font-size: 22px;
+    color: #555;
+    margin-top: 30px;
+  }
+  
+  .blog p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .blog-header-image,
+  .blog-mid-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .blog-mid-image {
+    margin-top: 40px;
+  }
+  
+  @media (max-width: 600px) {
+    .blog h1 {
+      font-size: 22px;
+    }
+  
+    .blog h2 {
+      font-size: 18px;
+    }
+  
+    .blog p {
+      font-size: 14px;
+    }
+  }

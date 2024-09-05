@@ -1,11 +1,11 @@
 import React from "react";
-import mainImage from "../../assets/images/main-image.jpg"; // Import the image
+import customerEngagement from "../../assets/images/customerEngagement.jpg"; // Import the image
 import "../../App.css";
 
 const MainImage = () => {
   return (
     <section className="main-image">
-      <img src={mainImage} alt="Main" /> {/* Use the imported image */}
+      <img src={customerEngagement} alt="Main" /> {/* Use the imported image */}
       <p>What's driving our customer engagement now?</p>
       <p>
         There are important challenges we’re facing that mean we need to consult

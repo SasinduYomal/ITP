@@ -4,7 +4,7 @@ import MainImage from './MainImage';
 import Description from './Description';
 import PriceReview from './PriceReview';
 import CustomerCategories from './CustomerCategories';
-import CustomerFeedback from './CustomerFeedback';
+import CustomerFeedbackForm from './CustomerFeedbackForm';
 
 const CustomerEngagement = () => {
     return (
@@ -14,7 +14,7 @@ const CustomerEngagement = () => {
             <Description />
             <PriceReview />
             <CustomerCategories />
-            <CustomerFeedback />
+            <CustomerFeedbackForm/>
         </div>
     );
 }
