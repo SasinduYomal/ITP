@@ -1,9 +1,25 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const User = require("../Model/FeedbackModel");
-const FeedbackController = require("../Controllers/FeedbackControllers") 
+const Feedback = require('../models/Feedback');
 
-router.get("/",FeedbackController.getAllUsers);
-router.post("/",FeedbackController.addUsers);
+// POST: Submit feedback
+router.post('/', async (req, res) => {
+    const { name, email, rating, feedback } = req.body;
+
+    try {
+        const newFeedback = new Feedback({
+            name,
+            email,
+            rating,
+            feedback
+        });
+        
+        await newFeedback.save();
+        res.status(200).json({ message: 'Feedback submitted successfully!' });
+    } catch (error) {
+        console.error('Error submitting feedback:', error);
+        res.status(500).json({ message: 'Server error. Please try again later.' });
+    }
+});
 
 module.exports = router;
