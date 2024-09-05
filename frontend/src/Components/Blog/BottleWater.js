@@ -3,7 +3,7 @@ import "../../App.css";
 import botteleWater from "../../assets/images/botteleWater.jpg";
 import water from "../../assets/images/water.avif";
 
-function DrinkingWater() {
+function BottleWater() {
   return (
     <div className="blog-container">
       <header className="header">
@@ -191,4 +191,4 @@ function DrinkingWater() {
   );
 }
 
-export default DrinkingWater;
+export default BottleWater;

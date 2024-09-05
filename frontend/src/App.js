@@ -6,12 +6,13 @@ import Promo from './Components/Promotion/Promo';
 import Partnership from './Components/Partnerships/Partnnership'
 import DrinkingWater from './Components/Blog/DrinkingWater';
 import BotteleWater from './Components/Blog/BottleWater'
+import Blog from './Components/Blog/Blog';
 
 
 function App() {
     return (
         <div className="App">
-            <BotteleWater/>
+            <Blog/>
            
         </div>
     );
