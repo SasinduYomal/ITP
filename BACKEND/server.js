@@ -1,37 +1,27 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bodyParser = require('body-parser');
-const feedbackRoutes = require('./routes/feedbackRoutes'); // Import feedback routes
-const proposalRoutes = require('./routes/proposalRoutes'); // Import proposal routes
+const feedbackRoutes = require('./routes/feedbackRoutes');
+const proposalRoutes = require('./routes/proposalRoutes');
 
-// Create an instance of express
 const app = express();
+const PORT = 5000;
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/feedbackDB', { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
-})
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.log('Error connecting to MongoDB:', err));
-
-// Use the routes
+// Routes
 app.use('/api', feedbackRoutes);
 app.use('/api', proposalRoutes);
 
-// Set up a simple GET route to check if the server is running
-app.get('/', (req, res) => {
-    res.send('API is running!');
-});
+// Database connection
+mongoose.connect('mongodb://localhost:27017/feedbackdb', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log('Error connecting to MongoDB:', err));
 
-// Start the server
-const PORT = process.env.PORT || 5000;
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
 

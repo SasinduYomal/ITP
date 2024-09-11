@@ -3,9 +3,11 @@ const mongoose = require("mongoose");
 const router = require("./routes/feedback");
 
 const app = express();
+const cors = require("cors");
 
 //middleware
 app.use(express.json());
+app.use(cors());
 app.use("/users",router)
 
 
