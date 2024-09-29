@@ -2,6 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     
+/*header*/
 
   }
   
@@ -414,6 +415,51 @@ header h1 {
     color: white;
     font-size: 1.5em;
 }
+.gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Gallery Images Grid */
+.gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.image-placeholder {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Hover Effect */
+.image-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .gallery-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-placeholder {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
 
 /* Preferences Section */
 .preferences{
@@ -567,7 +613,7 @@ select {
     width: 100%;
     max-width: 500px;
     align-items: center;
-    justify-content: center;
+    margin-left: 30%;
 }
 
 /* Title styling */
@@ -670,6 +716,7 @@ select {
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .partnership-item {

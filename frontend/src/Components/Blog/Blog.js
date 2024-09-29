@@ -2,6 +2,8 @@ import React from "react";
 import "../../App.css";
 import childWater from "../../assets/images/childWater.jpg";
 import body from "../../assets/images/body.jpg";
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 
 function Blog() {
   return (

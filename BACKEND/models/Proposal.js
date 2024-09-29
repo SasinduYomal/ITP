@@ -1,13 +1,14 @@
+// models/Proposal.js
 const mongoose = require('mongoose');
 
-const proposalSchema = new mongoose.Schema({
+const ProposalSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     companyName: { type: String, required: true },
-    website: { type: String },
+    website: { type: String, required: false },
     proposal: { type: String, required: true }
 }, { timestamps: true });
 
-const Proposal = mongoose.model('Proposal', proposalSchema);
+const Proposal = mongoose.model('Proposal', ProposalSchema);
 
 module.exports = Proposal;

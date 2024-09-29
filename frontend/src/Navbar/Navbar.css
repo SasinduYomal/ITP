@@ -1,0 +1,83 @@
+/* Basic Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0044cc;
+    padding: 10px;
+}
+
+.logo .logo-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar input {
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sign-in-btn {
+    background-color: white;
+    color: #0044cc;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content li a {
+    color: #0044cc;
+    text-decoration: none;
+}
+
+.dropdown-content li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Hide the dropdown content by default */
+.dropdown-content {
+    display: none;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}

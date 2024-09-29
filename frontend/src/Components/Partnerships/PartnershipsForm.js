@@ -1,103 +1,97 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../../App.css";
+import PartnershipFormSection from "./PartnershipFormSection";  // Import the form component
+import PartnershipsTable from "./PartnershipsTable";  // Import the table component
 
 const PartnershipsForm = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        companyName: '',
-        website: '',
-        proposal: ''
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    companyName: "",
+    website: "",
+    proposal: "",
+  });
+  const [proposals, setProposals] = useState([]);
+  const [editId, setEditId] = useState(null);
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  // Fetch existing proposals
+  const fetchProposals = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/proposals");
+      setProposals(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await axios.post('http://localhost:5000/api/proposals', formData);
-            alert('Proposal submitted successfully!');
-            // Reset the form fields after submission
-            setFormData({
-                name: '',
-                email: '',
-                companyName: '',
-                website: '',
-                proposal: ''
-            });
-        } catch (err) {
-            console.error(err);
-            alert('Error submitting proposal. Please try again.');
-        }
-    };
+  useEffect(() => {
+    fetchProposals();
+  }, []);
 
-    return (
-        <div className="partnership-form-container">
-            <h2>Express Interest in Partnerships</h2>
-            <p>Fill out the form below to express your interest in partnering with us. Provide as much detail as possible to help us understand your proposal.</p>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Your Name:</label>
-                <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    value={formData.name} 
-                    onChange={handleChange} 
-                    placeholder="Enter your full name" 
-                    required 
-                />
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-                <label htmlFor="email">Your Email:</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    placeholder="Enter your email address" 
-                    required 
-                />
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (editId) {
+        // Update existing proposal
+        await axios.put(`http://localhost:5000/api/proposals/${editId}`, formData);
+        alert("Proposal updated successfully!");
+      } else {
+        // Create new proposal
+        await axios.post("http://localhost:5000/api/proposals", formData);
+        alert("Proposal submitted successfully!");
+      }
+      setEditId(null);
+      setFormData({
+        name: "",
+        email: "",
+        companyName: "",
+        website: "",
+        proposal: "",
+      });
+      fetchProposals();
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting proposal. Please try again.");
+    }
+  };
 
-                <label htmlFor="companyName">Company Name:</label>
-                <input 
-                    type="text" 
-                    id="companyName" 
-                    name="companyName" 
-                    value={formData.companyName} 
-                    onChange={handleChange} 
-                    placeholder="Enter your company name" 
-                    required 
-                />
+  const handleEdit = (proposal) => {
+    setFormData(proposal);
+    setEditId(proposal._id);
+  };
 
-                <label htmlFor="website">Company Website:</label>
-                <input 
-                    type="url" 
-                    id="website" 
-                    name="website" 
-                    value={formData.website} 
-                    onChange={handleChange} 
-                    placeholder="Enter your company website URL" 
-                />
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/proposals/${id}`);
+      alert("Proposal deleted successfully!");
+      fetchProposals();
+    } catch (err) {
+      console.error(err);
+      alert("Error deleting proposal. Please try again.");
+    }
+  };
 
-                <label htmlFor="proposal">Your Proposal:</label>
-                <textarea 
-                    id="proposal" 
-                    name="proposal" 
-                    value={formData.proposal} 
-                    onChange={handleChange} 
-                    placeholder="Describe your proposal" 
-                    required 
-                />
-
-                <button type="submit">Submit Proposal</button>
-            </form>
-        </div>
-    );
+  return (
+    <div className="partnership-form-container">
+      <h2>Express Interest in Partnerships</h2>
+      <PartnershipFormSection
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        editId={editId}
+      />
+      <PartnershipsTable
+        proposals={proposals}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+    </div>
+  );
 };
 
 export default PartnershipsForm;
-
-
