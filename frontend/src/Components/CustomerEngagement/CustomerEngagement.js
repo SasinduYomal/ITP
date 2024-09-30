@@ -3,8 +3,7 @@ import MainImage from './MainImage';
 import Description from './Description';
 import PriceReview from './PriceReview';
 import CustomerCategories from './CustomerCategories';
-import CustomerFeedbackForm from './CustomerFeedbackForm';
-import FeedbackList from './FeedbackList';
+import CustomerFeedbackForm from './CustomerFeedbackForm'
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 
@@ -23,8 +22,7 @@ const CustomerEngagement = () => {
             <Description />
             <PriceReview />
             <CustomerCategories />
-            <CustomerFeedbackForm onFeedbackSubmitted={handleFeedbackSubmitted} />
-            <FeedbackList />
+            <CustomerFeedbackForm/>
             <Footer />
         </div>
     );

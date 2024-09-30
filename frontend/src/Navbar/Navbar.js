@@ -41,7 +41,6 @@ const Navbar = () => {
                         <ul className="dropdown-content">
                             <li><a href="/CustomerEngagement">Customer Engagement</a></li>
                             <li><a href="/partnerships">Partnership & Collaboration</a></li>
-                            <li><a href="/promotions">Promotion & Discount</a></li>
                         </ul>
                     )}
                 </li>

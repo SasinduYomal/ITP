@@ -3,69 +3,50 @@ const express = require('express');
 const router = express.Router();
 const Feedback = require('../models/Feedback');
 
-// @route   POST /api/feedback
-// @desc    Create new feedback
-router.post('/feedback', async (req, res) => {
-    const { name, email, rating, feedback } = req.body;
+// Create feedback
+router.post('/', async (req, res) => {
+    const newFeedback = new Feedback(req.body);
     try {
-        const newFeedback = new Feedback({
-            name,
-            email,
-            rating,
-            feedback
-        });
-        await newFeedback.save();
-        res.status(201).json(newFeedback);
+        const savedFeedback = await newFeedback.save();
+        res.status(201).json(savedFeedback);
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(400).json({ message: err.message });
     }
 });
 
-// @route   GET /api/feedback
-// @desc    Get all feedback
-router.get('/feedback', async (req, res) => {
+// Read all feedback
+router.get('/', async (req, res) => {
     try {
         const feedbacks = await Feedback.find();
         res.status(200).json(feedbacks);
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({ message: err.message });
     }
 });
 
-// @route   PUT /api/feedback/:id
-// @desc    Update feedback by ID
-router.put('/feedback/:id', async (req, res) => {
-    const { name, email, rating, feedback } = req.body;
+// Update feedback
+router.put('/:id', async (req, res) => {
     try {
-        const updatedFeedback = await Feedback.findByIdAndUpdate(
-            req.params.id,
-            { name, email, rating, feedback },
-            { new: true }
-        );
+        const updatedFeedback = await Feedback.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedFeedback) {
-            return res.status(404).json({ msg: 'Feedback not found' });
+            return res.status(404).json({ message: 'Feedback not found' });
         }
         res.status(200).json(updatedFeedback);
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(400).json({ message: err.message });
     }
 });
 
-// @route   DELETE /api/feedback/:id
-// @desc    Delete feedback by ID
-router.delete('/feedback/:id', async (req, res) => {
+// Delete feedback
+router.delete('/:id', async (req, res) => {
     try {
-        const feedback = await Feedback.findByIdAndDelete(req.params.id);
-        if (!feedback) {
-            return res.status(404).json({ msg: 'Feedback not found' });
+        const deletedFeedback = await Feedback.findByIdAndDelete(req.params.id);
+        if (!deletedFeedback) {
+            return res.status(404).json({ message: 'Feedback not found' });
         }
-        res.status(200).json({ msg: 'Feedback deleted successfully' });
+        res.status(204).send();
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(400).json({ message: err.message });
     }
 });
 
