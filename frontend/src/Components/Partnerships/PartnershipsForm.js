@@ -77,6 +77,7 @@ const PartnershipsForm = () => {
   };
 
   return (
+    
     <div className="partnership-form-container">
       <h2>Express Interest in Partnerships</h2>
       <PartnershipFormSection
