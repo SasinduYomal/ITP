@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './admin.css'; // Link the CSS file
 import PartnershipTableList from '../Admin/PartnershipTableList'
-import Promotion from '../Admin/Promotions'
-import Discounts from '../Admin/Discounts'
 import Feedback from '../Admin/FeedbackList';
 
 
@@ -20,8 +18,6 @@ function Admin() {
             </nav>
             <PartnershipTableList/>
             <Feedback/>
-            <Promotion/>
-            <Discounts/>
         </div>
     );
 }

@@ -2,10 +2,13 @@ import React from "react";
 import "../../App.css";
 import botteleWater from "../../assets/images/botteleWater.jpg";
 import water from "../../assets/images/water.avif";
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 
 function BottleWater() {
   return (
     <div className="blog-container">
+      <Navbar/>
       <header className="header">
         <img src={botteleWater} alt="Main" />
       </header>
@@ -187,6 +190,7 @@ function BottleWater() {
           allergies? Experts say they work best for 2 conditions
         </p>
       </section>
+      <Footer/>
     </div>
   );
 }

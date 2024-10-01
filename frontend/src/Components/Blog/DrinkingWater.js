@@ -2,10 +2,13 @@ import React from "react";
 import "../../App.css";
 import drinkingWater from "../../assets/images/drinkingWater.jpeg";
 import drinking from "../../assets/images/drinking.jpg";
+import Navbar from '../../Navbar/Navbar';
+import Footer from '../../Footer/Footer';
 
 function DrinkingWater() {
   return (
     <div className="blog-container">
+      <Navbar/>
       <header className="header">
         <img src={drinkingWater} alt="Main" />
       </header>
@@ -117,6 +120,7 @@ function DrinkingWater() {
           down into microplastics and get into various ecosystems.
         </p>
       </section>
+      <Footer/>
     </div>
   );
 }

@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { CSVLink } from "react-csv";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 import "../../App.css";
 
 const FeedbackList = () => {
   const [feedbackList, setFeedbackList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [editingFeedbackId, setEditingFeedbackId] = useState(null); // For editing state
+  const [editingFeedbackId, setEditingFeedbackId] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     rating: "",
     feedback: "",
   });
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetchFeedback();
@@ -30,7 +34,7 @@ const FeedbackList = () => {
 
   const handleEdit = (feedback) => {
     setFormData(feedback);
-    setEditingFeedbackId(feedback._id); // Set editing ID
+    setEditingFeedbackId(feedback._id);
   };
 
   const handleDelete = async (id) => {
@@ -38,7 +42,7 @@ const FeedbackList = () => {
       try {
         await axios.delete(`http://localhost:5000/api/feedback/${id}`);
         alert("Feedback deleted successfully!");
-        fetchFeedback(); // Refresh feedback list
+        fetchFeedback();
       } catch (err) {
         console.error("Error deleting feedback:", err);
         alert("Error deleting feedback. Please try again.");
@@ -54,9 +58,9 @@ const FeedbackList = () => {
         formData
       );
       alert("Feedback updated successfully!");
-      fetchFeedback(); // Refresh feedback list
-      setFormData({ name: "", email: "", rating: "", feedback: "" }); // Reset form
-      setEditingFeedbackId(null); // Reset editing state
+      fetchFeedback();
+      setFormData({ name: "", email: "", rating: "", feedback: "" });
+      setEditingFeedbackId(null);
     } catch (err) {
       console.error("Error updating feedback:", err);
       alert("Error updating feedback. Please try again.");
@@ -67,6 +71,41 @@ const FeedbackList = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const generateCSV = () => {
+    return feedbackList.map(feedback => ({
+      Name: feedback.name,
+      Email: feedback.email,
+      Rating: feedback.rating,
+      Feedback: feedback.feedback
+    }));
+  };
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    const tableColumn = ["Name", "Email", "Rating", "Feedback"];
+    const tableRows = [];
+
+    feedbackList.forEach(feedback => {
+      const feedbackData = [
+        feedback.name,
+        feedback.email,
+        feedback.rating,
+        feedback.feedback
+      ];
+      tableRows.push(feedbackData);
+    });
+
+    doc.autoTable(tableColumn, tableRows, { startY: 20 });
+    doc.text("Feedback Report", 14, 15);
+    doc.save("feedback_report.pdf");
+  };
+
+  const filteredFeedbacks = feedbackList.filter(feedback =>
+    feedback.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    feedback.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    feedback.feedback.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   if (loading) {
     return <div>Loading feedback...</div>;
   }
@@ -74,6 +113,21 @@ const FeedbackList = () => {
   return (
     <div className="admin-feedback-container">
       <h2>Feedback List</h2>
+
+      {/* Search Bar */}
+      <input
+        type="text"
+        placeholder="Search feedback..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        style={{ marginBottom: "10px", padding: "5px" }}
+      />
+
+      {/* Download Report Buttons */}
+      <button onClick={generatePDF} style={{ marginBottom: '10px' }}>Download PDF Report</button>
+      <CSVLink data={generateCSV()} filename="feedback-report.csv">
+        <button style={{ marginBottom: "10px" }}>Download CSV Report</button>
+      </CSVLink>
 
       {/* Edit Feedback Form */}
       {editingFeedbackId && (
@@ -132,7 +186,7 @@ const FeedbackList = () => {
           </tr>
         </thead>
         <tbody>
-          {feedbackList.map((feedback) => (
+          {filteredFeedbacks.map((feedback) => (
             <tr key={feedback._id}>
               <td>{feedback.name}</td>
               <td>{feedback.email}</td>

@@ -8,6 +8,7 @@ import Footer from '../../Footer/Footer';
 function Blog() {
   return (
     <div className="blog-container">
+      <Navbar/>
       <header className="header">
         <img src={childWater} alt="Main" />
       </header>
@@ -198,6 +199,7 @@ function Blog() {
           option.
         </p>
       </section>
+      <Footer/>
     </div>
   );
 }

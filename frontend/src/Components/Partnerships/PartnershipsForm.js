@@ -10,6 +10,7 @@ const PartnershipsForm = () => {
     website: "",
     proposal: "",
   });
+  const [errors, setErrors] = useState({});
   const [proposals, setProposals] = useState([]);
   const [editId, setEditId] = useState(null);
 
@@ -27,12 +28,39 @@ const PartnershipsForm = () => {
     fetchProposals();
   }, []);
 
+  const validate = () => {
+    const newErrors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const websiteRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,4}\/?$/;
+
+    if (!formData.name) {
+      newErrors.name = "Name is required";
+    }
+    if (!formData.email || !emailRegex.test(formData.email)) {
+      newErrors.email = "Valid email is required";
+    }
+    if (!formData.companyName) {
+      newErrors.companyName = "Company name is required";
+    }
+    if (!formData.website || !websiteRegex.test(formData.website)) {
+      newErrors.website = "Valid website URL is required";
+    }
+    if (!formData.proposal) {
+      newErrors.proposal = "Proposal is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
+
     try {
       if (editId) {
         // Update existing proposal
@@ -97,6 +125,7 @@ const PartnershipsForm = () => {
             required
             style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
           />
+          {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
           <input
             name="email"
             value={formData.email}
@@ -105,6 +134,7 @@ const PartnershipsForm = () => {
             required
             style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
           />
+          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
           <input
             name="companyName"
             value={formData.companyName}
@@ -113,6 +143,7 @@ const PartnershipsForm = () => {
             required
             style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
           />
+          {errors.companyName && <p style={{ color: "red" }}>{errors.companyName}</p>}
           <input
             name="website"
             value={formData.website}
@@ -121,6 +152,7 @@ const PartnershipsForm = () => {
             required
             style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
           />
+          {errors.website && <p style={{ color: "red" }}>{errors.website}</p>}
           <textarea
             name="proposal"
             value={formData.proposal}
@@ -129,6 +161,7 @@ const PartnershipsForm = () => {
             required
             style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
           />
+          {errors.proposal && <p style={{ color: "red" }}>{errors.proposal}</p>}
           <button
             type="submit"
             style={{

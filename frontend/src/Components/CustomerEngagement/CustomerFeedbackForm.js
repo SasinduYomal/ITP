@@ -139,12 +139,33 @@ const CustomerFeedbackForm = () => {
         }
     };
 
+    // Validation Function
+    const validateForm = () => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(formData.email)) {
+            alert('Please enter a valid email address.');
+            return false;
+        }
+
+        if (formData.rating < 1 || formData.rating > 5) {
+            alert('Please select a valid rating.');
+            return false;
+        }
+
+        return true;
+    };
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
         setLoading(true);
         try {
             if (editingFeedbackId) {

@@ -10,18 +10,17 @@ import Blog from './Components/Blog/Blog';
 import CustomerCategories from './Components/CustomerEngagement/CustomerCategories';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
-import Promotions from './Components/Admin/Promotions';
 import Admin from './Components/Admin/Admin';
 import PartnershipTableList from './Components/Admin/PartnershipTableList'
 import PartnershipTable from './Components/Partnerships/PartnershipsTable'
 import CustomerFeedbackForm from './Components/CustomerEngagement/CustomerFeedbackForm'
 import FeedbackList from './Components/Admin/FeedbackList';
-import Discounts from './Components/Admin/Discounts';
+
 
 function App() {
     return (
         <div className="App">
-        <CustomerEngagement/>
+        <Admin/>
         </div>
     );
 }
