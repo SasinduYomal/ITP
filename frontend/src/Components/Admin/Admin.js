@@ -13,7 +13,6 @@ function Admin() {
                 <ul className="nav-links">
                     <li><Link to="/CustomerFeedbackList">Customer Engagement</Link></li>
                     <li><Link to="/PartnershipTableList">Partnership & Collaboration</Link></li>
-                    <li><Link to="/Promotion">Promotion & Discount</Link></li>
                 </ul>
             </nav>
             <PartnershipTableList/>

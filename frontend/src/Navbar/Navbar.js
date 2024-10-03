@@ -19,10 +19,6 @@ const Navbar = () => {
             <div className="logo">
                 <span className="logo-text">BLUEWAVE</span>
             </div>
-            <div className="search-bar">
-                <input type="text" placeholder="Search..." />
-                <button>Search</button>
-            </div>
             <ul className="nav-links">
                 <li><a href="/">Products</a></li>
                 <li><a href="/">Career</a></li>
@@ -40,7 +36,7 @@ const Navbar = () => {
                     {dropdownVisible && (
                         <ul className="dropdown-content">
                             <li><a href="/CustomerEngagement">Customer Engagement</a></li>
-                            <li><a href="/partnerships">Partnership & Collaboration</a></li>
+                            <li><a href="/Partnerships">Partnership & Collaboration</a></li>
                         </ul>
                     )}
                 </li>

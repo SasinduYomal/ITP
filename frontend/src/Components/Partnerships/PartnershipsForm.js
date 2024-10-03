@@ -32,6 +32,7 @@ const PartnershipsForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const websiteRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,4}\/?$/;
+    const numberRegex = /^\d+$/; // Regex to check if the proposal contains only numbers
 
     if (!formData.name) {
       newErrors.name = "Name is required";
@@ -47,6 +48,8 @@ const PartnershipsForm = () => {
     }
     if (!formData.proposal) {
       newErrors.proposal = "Proposal is required";
+    } else if (numberRegex.test(formData.proposal)) {
+      newErrors.proposal = "Proposal cannot contain only numbers";
     }
 
     setErrors(newErrors);
