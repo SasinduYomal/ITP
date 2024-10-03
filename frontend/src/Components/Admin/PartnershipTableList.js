@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import jsPDF from "jspdf";
 
 const PartnershipsTable = () => {
   const [proposals, setProposals] = useState([]);
@@ -30,12 +31,38 @@ const PartnershipsTable = () => {
     }
   };
 
+  // Filtered proposals based on search query
   const filteredProposals = proposals.filter(proposal =>
     proposal.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     proposal.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
     proposal.companyName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     proposal.proposal.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Function to generate the PDF report
+  const generatePDFReport = () => {
+    const doc = new jsPDF();
+
+    // Add company name and current date
+    doc.text("Your Company Name", 10, 10); // Customize this line for your company name
+    const currentDate = new Date().toLocaleDateString();
+    doc.text(`Date: ${currentDate}`, 150, 10);
+
+    doc.text("Proposals Report", 10, 20);
+
+    let yOffset = 30; // Initial offset for the data rows
+    filteredProposals.forEach((proposal, index) => {
+      doc.text(
+        `#${index + 1} - Name: ${proposal.name}, Email: ${proposal.email}, Company: ${proposal.companyName}, Website: ${proposal.website}, Proposal: ${proposal.proposal}`,
+        10,
+        yOffset
+      );
+      yOffset += 10; // Increase the yOffset for the next row
+    });
+
+    // Save the generated PDF
+    doc.save("Proposals_Report.pdf");
+  };
 
   return (
     <section>
@@ -49,6 +76,10 @@ const PartnershipsTable = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
         style={{ marginBottom: "10px", padding: "5px" }}
       />
+
+      <button onClick={generatePDFReport} style={{ marginBottom: "10px" }}>
+        Generate PDF Report
+      </button>
 
       <table className="proposal-table">
         <thead>

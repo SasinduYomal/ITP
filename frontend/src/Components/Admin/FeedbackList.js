@@ -72,11 +72,11 @@ const FeedbackList = () => {
   };
 
   const generateCSV = () => {
-    return feedbackList.map(feedback => ({
+    return feedbackList.map((feedback) => ({
       Name: feedback.name,
       Email: feedback.email,
       Rating: feedback.rating,
-      Feedback: feedback.feedback
+      Feedback: feedback.feedback,
     }));
   };
 
@@ -85,22 +85,29 @@ const FeedbackList = () => {
     const tableColumn = ["Name", "Email", "Rating", "Feedback"];
     const tableRows = [];
 
-    feedbackList.forEach(feedback => {
+    feedbackList.forEach((feedback) => {
       const feedbackData = [
         feedback.name,
         feedback.email,
         feedback.rating,
-        feedback.feedback
+        feedback.feedback,
       ];
       tableRows.push(feedbackData);
     });
 
-    doc.autoTable(tableColumn, tableRows, { startY: 20 });
-    doc.text("Feedback Report", 14, 15);
+    const companyName = "Your Company Name";
+    const currentDate = new Date().toLocaleDateString();
+
+    // Add company name and date at the top of the PDF
+    doc.text(`${companyName}`, 14, 15);
+    doc.text(`Date: ${currentDate}`, 14, 22);
+
+    doc.autoTable(tableColumn, tableRows, { startY: 30 });
+     // Adjusted to fit below company name and date
     doc.save("feedback_report.pdf");
   };
 
-  const filteredFeedbacks = feedbackList.filter(feedback =>
+  const filteredFeedbacks = feedbackList.filter((feedback) =>
     feedback.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     feedback.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
     feedback.feedback.toLowerCase().includes(searchQuery.toLowerCase())
@@ -124,7 +131,9 @@ const FeedbackList = () => {
       />
 
       {/* Download Report Buttons */}
-      <button onClick={generatePDF} style={{ marginBottom: '10px' }}>Download PDF Report</button>
+      <button onClick={generatePDF} style={{ marginBottom: "10px" }}>
+        Download PDF Report
+      </button>
       <CSVLink data={generateCSV()} filename="feedback-report.csv">
         <button style={{ marginBottom: "10px" }}>Download CSV Report</button>
       </CSVLink>
