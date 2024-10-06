@@ -16,15 +16,15 @@ import PartnershipTable from './Components/Partnerships/PartnershipsTable'
 import CustomerFeedbackForm from './Components/CustomerEngagement/CustomerFeedbackForm'
 import FeedbackList from './Components/Admin/FeedbackList';
 
-
 function App() {
-    return (
-        <div className="App">
-        <PartnershipTableList/>
-        </div>
-    );
+  return (
+    <div>
+      <Partnership />
+    </div>
+  );
 }
 
 export default App;
+
 
 

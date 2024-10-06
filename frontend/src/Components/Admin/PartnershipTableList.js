@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const PartnershipsTable = () => {
   const [proposals, setProposals] = useState([]);
@@ -39,7 +40,7 @@ const PartnershipsTable = () => {
     proposal.proposal.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Function to generate the PDF report
+  // Function to generate the PDF report with a table
   const generatePDFReport = () => {
     const doc = new jsPDF();
 
@@ -48,25 +49,53 @@ const PartnershipsTable = () => {
     const currentDate = new Date().toLocaleDateString();
     doc.text(`Date: ${currentDate}`, 150, 10);
 
-    doc.text("Proposals Report", 10, 20);
-
-    let yOffset = 30; // Initial offset for the data rows
-    filteredProposals.forEach((proposal, index) => {
-      doc.text(
-        `#${index + 1} - Name: ${proposal.name}, Email: ${proposal.email}, Company: ${proposal.companyName}, Website: ${proposal.website}, Proposal: ${proposal.proposal}`,
-        10,
-        yOffset
-      );
-      yOffset += 10; // Increase the yOffset for the next row
+    // Generate the table with proposals data
+    doc.autoTable({
+      head: [['Name', 'Email', 'Company Name', 'Website', 'Proposal']],
+      body: filteredProposals.map(proposal => [
+        proposal.name,
+        proposal.email,
+        proposal.companyName,
+        proposal.website,
+        proposal.proposal,
+      ]),
+      startY: 20, // Start after the header text
     });
 
     // Save the generated PDF
     doc.save("Proposals_Report.pdf");
   };
 
+  // Function to download proposals as CSV
+  const downloadCSV = () => {
+    const headers = ['Name', 'Email', 'Company Name', 'Website', 'Proposal'];
+    const rows = filteredProposals.map(proposal => [
+      proposal.name,
+      proposal.email,
+      proposal.companyName,
+      proposal.website,
+      proposal.proposal,
+    ]);
+
+    // Combine headers and rows into CSV format
+    const csvContent = [headers, ...rows]
+      .map(e => e.join(","))
+      .join("\n");
+
+    // Create a blob and download the CSV file
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "Proposals_Report.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section>
-      <h3>Existing Proposals</h3>
+      <h2>Existing Proposals</h2>
 
       {/* Search Bar */}
       <input
@@ -77,8 +106,11 @@ const PartnershipsTable = () => {
         style={{ marginBottom: "10px", padding: "5px" }}
       />
 
-      <button onClick={generatePDFReport} style={{ marginBottom: "10px" }}>
+      <button onClick={generatePDFReport} style={{ marginRight: "10px" }}>
         Generate PDF Report
+      </button>
+      <button onClick={downloadCSV} style={{ marginBottom: "10px" }}>
+        Download CSV
       </button>
 
       <table className="proposal-table">

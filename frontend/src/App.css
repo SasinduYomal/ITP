@@ -878,3 +878,34 @@ button {
     border-radius: 4px;
 }
 
+
+
+/* Add this in App.css or a similar CSS file */
+h2 {
+    color: darkblue;
+  }
+  
+  form {
+    margin: 20px 0;
+  }
+  
+  input, select, button {
+    margin: 10px 5px;
+  }
+  
+  button {
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: blue;
+  }
+  
+  div {
+    margin: 20px;
+  }
+  
