@@ -45,7 +45,7 @@ const PartnershipsTable = () => {
     const doc = new jsPDF();
 
     // Add company name and current date
-    doc.text("Your Company Name", 10, 10); // Customize this line for your company name
+    doc.text("BlueWave", 10, 10); // Customize this line for your company name
     const currentDate = new Date().toLocaleDateString();
     doc.text(`Date: ${currentDate}`, 150, 10);
 

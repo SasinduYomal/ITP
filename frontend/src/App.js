@@ -19,7 +19,7 @@ import FeedbackList from './Components/Admin/FeedbackList';
 function App() {
   return (
     <div>
-      <Partnership />
+      <Admin />
     </div>
   );
 }

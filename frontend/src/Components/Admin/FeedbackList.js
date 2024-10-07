@@ -95,7 +95,7 @@ const FeedbackList = () => {
       tableRows.push(feedbackData);
     });
 
-    const companyName = "Your Company Name";
+    const companyName = "BlueWave";
     const currentDate = new Date().toLocaleDateString();
 
     // Add company name and date at the top of the PDF
